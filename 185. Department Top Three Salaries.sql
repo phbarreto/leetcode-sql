@@ -86,29 +86,6 @@
     - filtrar para trazer apenas salary_rank menor ou igual a 3
 */
 
-/*
-with cte_rank as (
-        select 
-        employee.id as employee_id
-        ,employee.name as employee_name
-        ,salary
-        ,dense_rank() over(partition by department.id order by salary desc)  as salary_rank
-        ,departmentId as departament_id
-        ,department.name as department_name
-        from employee 
-        left join department 
-            on employee.departmentId = department.id
-        -- order by departmentId
-    )
-    select 
-        department_name
-        ,employee_name
-        ,salary
-    from cte_rank
-    where
-        salary_rank <= 3
-*/
-
 with cte_rank as (
     select 
     employee.id as employee_id
